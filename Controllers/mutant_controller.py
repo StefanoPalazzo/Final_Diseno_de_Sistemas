@@ -1,4 +1,11 @@
 from flask import Flask,jsonify, request
+# from Services.detect_mutant import is_mutant
+# import sys
+import os
+
+# # Agregar la ruta del directorio que contiene Services al PYTHONPATH
+# # Esto se hace asumiendo que este script está en Controllers
+# sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../Services')))
 
 app = Flask(__name__)
 
@@ -17,9 +24,10 @@ def get_mutante_id(mutante_id):
     mutante = {"id": mutante_id, "name": "pedro"}
 
 @app.route("/mutant", methods=['POST'])
-def check_dna(mutante_id):
+def check_dna():
     data = request.get_json()
-    return jsonify(data), 201
+    result = is_mutant(data)
+    return jsonify(result), 201
 
 
 
@@ -28,4 +36,4 @@ def check_dna(mutante_id):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True,host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
