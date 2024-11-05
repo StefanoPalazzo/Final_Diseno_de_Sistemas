@@ -1,3 +1,5 @@
+from repositories.mutant_repository import MutantRepository
+
 def is_mutant(dna):
     n = len(dna)
     
@@ -43,3 +45,7 @@ def is_mutant(dna):
 
     return False
 
+
+def detect_and_save(dna):
+    ismutant = is_mutant(dna)
+    MutantRepository.save(dna, ismutant)
