@@ -43,9 +43,13 @@ def check_dna():
 
     if "dna" in data.keys():
         dna_values = data["dna"]
-        result = detect_and_save(dna_values)
+        ismutant, result = detect_and_save(dna_values)
+
+    if not result:
+        return jsonify({"error": "DNA sequence already exists"}), 409
+
     
-    if result:
+    if ismutant:
         return jsonify({"Resultado": "Es un mutante"}), 200
     else:
         return jsonify({"Resultado":"No es un mutante."}),403

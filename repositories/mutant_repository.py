@@ -11,11 +11,14 @@ class MutantRepository:
     
     @staticmethod
     def save(dna_sequence, is_mutant):
-        # Verificar si ya existe el ADN en la base de datos
-        # existing_record = Mutant.query.filter_by(dna_sequence=dna_sequence).first()
-        # if existing_record:
-        #     return False  # ADN ya registrado
+        # Convertir el JSON de ADN a una cadena para compararla con los registros en la base de datos
+        dna_sequence_str = "{" + ",".join(dna_sequence) + "}"
+    
         
+        # Verificar si el ADN ya existe en la base de datos
+        existing_record = Mutant.query.filter_by(dna_sequence=dna_sequence_str).first()
+        if existing_record:
+            return False  # ADN ya registrado
         new_dna = Mutant(dna_sequence=dna_sequence, is_mutant=is_mutant)
         db.session.add(new_dna)
         db.session.commit()

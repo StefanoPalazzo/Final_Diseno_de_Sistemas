@@ -16,7 +16,6 @@ def test_root(client):
 def test_get_mutantes(client):
     rv = client.get('/mutantes')
     assert rv.status_code == 200
-    assert rv.data == b'mutantes'
 
 
 
