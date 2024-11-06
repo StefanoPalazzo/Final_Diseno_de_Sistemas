@@ -53,6 +53,7 @@ http://127.0.0.1:5000
 ```
 
 ### En render
+(Tener en cuenta que pueden haber demoras de hasta 50 segundos para procesar la solicitud)
 
 Para probar la API en render, se debe utilizar la siguiente URL:
 
