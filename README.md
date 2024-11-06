@@ -1,12 +1,11 @@
 # API con Python y Flask para detección de Gen Mutante
 
-Este proyecto implementa una API REST con Python y Flask para la detección de genes mutantes dada una matriz de ADN.
-
+Este proyecto implementa una API REST con Python y Flask alojada en Render y utilizando una base de datos PostgreSQL para la detección de genes mutantes dada una matriz de ADN.
 
 
 ## Tabla de Contenidos
 
-- [Instalación Local (Opcional)](#instalación)
+- [Instalación Local (Opcional)](#instalación-local-opcional)
 - [Uso](#uso)
 - [Testing](#testing)
 
@@ -63,11 +62,11 @@ https://final-diseno-de-sistemas.onrender.com/
 
 ### Endpoints
 
-#### GET /mutantes/
+#### - GET /mutantes/
 
 Retorna la base de DNA de los mutantes y humanos detectados.
 
-#### POST /mutant/
+#### - POST /mutant/
 
 Debe enviarse un DNA en formato JSON con la siguiente estructura:
 
@@ -78,7 +77,7 @@ Debe enviarse un DNA en formato JSON con la siguiente estructura:
 ```
 El endpoint retornará un código de estado 200 si el DNA es mutante, y un código de estado 403 si el DNA es humano.
 
-#### GET /stats/
+#### - GET /stats/
 
 Retorna las estadísticas de los DNA analizados.
 
