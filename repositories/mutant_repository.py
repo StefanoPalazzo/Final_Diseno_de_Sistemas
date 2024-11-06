@@ -6,11 +6,15 @@ class MutantRepository:
         return Mutant.query.filter_by(dna_sequence=dna_sequence).first()
     
     @staticmethod
+    def get_all():
+        return Mutant.query.all()
+    
+    @staticmethod
     def save(dna_sequence, is_mutant):
         # Verificar si ya existe el ADN en la base de datos
-        existing_record = Mutant.query.filter_by(dna_sequence=dna_sequence).first()
-        if existing_record:
-            return False  # ADN ya registrado
+        # existing_record = Mutant.query.filter_by(dna_sequence=dna_sequence).first()
+        # if existing_record:
+        #     return False  # ADN ya registrado
         
         new_dna = Mutant(dna_sequence=dna_sequence, is_mutant=is_mutant)
         db.session.add(new_dna)

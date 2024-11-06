@@ -1,4 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
+
 import os
 
 db = SQLAlchemy()
@@ -13,3 +14,10 @@ class Mutant(db.Model):
     def __init__(self, dna_sequence, is_mutant):
         self.dna_sequence = dna_sequence
         self.is_mutant = is_mutant
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'dna_sequence': self.dna_sequence,
+            'is_mutant': self.is_mutant
+        }
