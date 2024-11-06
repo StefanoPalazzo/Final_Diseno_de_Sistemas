@@ -17,10 +17,19 @@ def test_get_mutantes(client):
     rv = client.get('/mutantes')
     assert rv.status_code == 200
 
-
-
-
 def test_check_dna_invalid_request(client):
+    """Test when the request is malformed (missing 'dna')"""
     rv = client.post('/mutant', json={})
     assert rv.status_code == 400
     assert rv.json == {"error": "Solicitud mal formada: se esperaba un objeto JSON con la clave 'dna'."}
+
+
+def test_check_dna_mutant(client):
+    dna = ["ATCGTG",
+        "CACTTC",
+        "TTATGT",
+        "AGATCG",
+        "TCAGGA",
+        "ATAACT"]
+    rv = client.post('/mutant', json={"dna": dna})
+    assert rv.status_code == 409
