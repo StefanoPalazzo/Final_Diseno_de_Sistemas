@@ -20,6 +20,11 @@ def root():
 
 @app.route("/mutantes")
 def get_mutantes():
+    mutantes = MutantRepository.get_stats()
+    return jsonify(mutantes)
+
+@app.route("/stats")
+def get_stats():
     mutantes = MutantRepository.get_all()
     return jsonify([mutant.to_dict() for mutant in mutantes])
 
