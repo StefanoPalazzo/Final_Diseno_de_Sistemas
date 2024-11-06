@@ -1,10 +1,10 @@
 from flask import Flask,jsonify, request
 from Services.detect_mutant import is_mutant, detect_and_save
 from repositories.mutant_repository import MutantRepository
-# import sys
-import os
 from model import db  # Asegúrate de importar db
-
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 app = Flask(__name__)
 
